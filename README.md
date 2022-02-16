@@ -5,7 +5,7 @@ Movie SPA for rating, retrieve and comment movies!
 Run ...  from ... directory for starting back server and API connection.
 
 # Frontend React
-Run "npm start" from ... directory to run frontend service. You'll find a quick tutorial and web tour in the landing page :) 
+Once npm installed, run "npm run dev" from NicaMovies directory to run frontend service. You'll find a quick tutorial and web tour in the landing page :) 
 
 
 <br/>
