@@ -10,8 +10,6 @@ function Detail({ movie }) {
     i--;
   }
 
-  console.log("detail: " + movie);
-
   const myStyle = {
     backgroundImage: `url(${movie.img})`,
     fontSize: "15px",

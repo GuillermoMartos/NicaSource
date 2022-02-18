@@ -19,7 +19,6 @@ function Card({  title, year, rating,
   var dispatch = useDispatch();
 
   function sendMovie(movie){
-    
     if (!localStorage.getItem('NicaMovieUser'))return alert("Log IN first!")
     dispatch(setMovie(movie))
     document.getElementById('move-div').style.marginLeft='10%'
@@ -48,11 +47,11 @@ function Card({  title, year, rating,
             COMMENTS
           </button>
 
-          {/* <Link to={`/edit/${id}`}> */}
+    
           <button className="btn-del" onClick={() => {sendMovie(movie)}}>
             REVIEWS
           </button>
-          {/* </Link> */}
+     
         </div>
       </div>
     </div>
