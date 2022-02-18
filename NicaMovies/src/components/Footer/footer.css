@@ -1,0 +1,19 @@
+.footer { 
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #1E679A;;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  .link:hover{
+    text-decoration: none;
+    background-color: yellow;
+    
+  }
+
+  .link:active{
+    font-size: larger;
+  }
