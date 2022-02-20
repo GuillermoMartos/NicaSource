@@ -27,19 +27,19 @@ function App() {
     setSearch(e.target.value);
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     if (search.trim() === "")
       return alert("please submit any text to match films");
-    axios
-      .get(`https://omdbapi.com/?apikey=3f413535&t=${search}`)
-      .then((response) => {
-        setFind(response.data);
-      })
-      .catch(function (error) {
-        console.error({ error: error });
-      });
-    console.log(load);
+    // await axios
+    //   .get(`http://localhost:8000/user`)
+    //   .then((response) => {
+    //     setFind(response.data);
+    //   })
+    //   .catch(function (error) {
+    //     console.error({ error: error });
+    //   });
+    
   }
 
   return (

@@ -1,7 +1,7 @@
 import React from "react";
 import "./detail-card.sass";
 
-function Detail({ movie }) {
+function Comments({ movie }) {
   let stars = "";
   let i = movie?.rating?.toFixed(0);
   if (i == 0) stars += "🏳";
@@ -25,17 +25,14 @@ function Detail({ movie }) {
     "z-index": -1,
   };
 
+
+
+
   return (
     <div id="move-div" style={myStyle} className="container-detail-card">
       <div className="card-detail">
-        <button
-          className="card-btn"
-          onClick={() =>
-            (document.getElementById("move-div").style.marginLeft = "-110%")
-          }
-        >
-          X
-        </button>
+      <button className="card-btn" onClick={()=>(document.getElementById('move-div').style.marginLeft='-110%')}>
+        X</button>
         <h4 className="text-card-detail">Title</h4>
         <h1>{movie.title}</h1>
         <div className="parent-inner">
@@ -65,4 +62,4 @@ function Detail({ movie }) {
   );
 }
 
-export default Detail;
+export default Comments;
