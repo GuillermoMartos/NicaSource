@@ -1,5 +1,6 @@
 import React from "react";
 import "./card-movie.sass"
+import axios from 'axios'
 import { useDispatch } from "react-redux";
 import { setMovie } from "../actions/indexActions";
 
@@ -18,10 +19,23 @@ function Card({  title, year, rating,
   } 
   var dispatch = useDispatch();
 
-  function sendMovie(movie){
-    if (!localStorage.getItem('NicaMovieUser'))return alert("Log IN first!")
+  async function sendMovie(movie){
+    if (!localStorage.getItem('NicaMovieUser')){
+      scroll(0,0)
+      return alert("must be logged!")
+    }
+      await axios({
+      method: "GET",
+      // headers: {'Authorization': {username:log.}},
+      // auth:'username:user, password:django',
+      url: `http://localhost:8000/user/opinions/${movie.id}`
+    }).then((res) => {
+     movie.opinions=res.data
+    });
     dispatch(setMovie(movie))
-    document.getElementById('move-div').style.marginLeft='10%'
+    scroll(0,100)
+    document.getElementById('move-div').style.marginLeft='5%'
+    document.getElementById('move-cdiv').style.marginLeft='60%'
   }
 
 
