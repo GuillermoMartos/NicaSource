@@ -32,6 +32,7 @@ function Detail({ movie }) {
           className="card-btn"
           onClick={() =>
             (document.getElementById("move-div").style.marginLeft = "-110%")
+            (document.getElementById("move-cdiv").style.marginLeft = "-110%")
           }
         >
           X

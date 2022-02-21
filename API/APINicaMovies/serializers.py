@@ -1,6 +1,12 @@
 from rest_framework import serializers
 from .models import User, Film
 
+
+class FilmSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Film
+        fields='__all__'
+        
 class UserSerializer(serializers.ModelSerializer):
      class Meta:
         model=User
@@ -10,9 +16,3 @@ class UserSerializer(serializers.ModelSerializer):
             'required': True
         }}
 
-
-
-class FilmSerializer(serializers.ModelSerializer):
-    class Meta:
-        model=Film
-        fields='__all__'

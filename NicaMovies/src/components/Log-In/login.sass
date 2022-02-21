@@ -1,3 +1,9 @@
+@font-face
+  font-family: '3dumbregular'
+  src: url('../utils/3Dumb-webfont.woff') format('woff')
+  font-weight: normal
+  font-style: normal
+  
 .nav
   background: rgb(45,116,129)
   background: linear-gradient(205deg, rgba(45,116,129,1) 0%, rgba(26,63,70,1) 19%, rgba(63,63,116,1) 86%, rgba(46,121,109,0.8552463221616772) 98%)
@@ -6,15 +12,15 @@
   position: absolute
   margin-left: 4%
   margin-top: 3px
-  
-    
 
-.header
-  background: transparent
-  position: sticky
-  z-index: 2
-  top:0
-    
+.NM
+  font-family: '3dumbregular'
+  color: white
+  font-weight: bolder
+  font-size: 35px
+  position: absolute
+  margin-top: 0px
+  margin-left: 10%
 
 .Log
   display: flex
@@ -22,20 +28,28 @@
   align-items: center
   margin-top: 3px
   color: white
+  
 
 
   .input
     margin-left: 5px
     margin-top: 18px
     margin-right: 10px
-
+  
   .form
-    display: inline-flex
+    display: flex
+    flex-direction: row
+    margin-left: 50px
     align-items: start
+   
 
-  .hola
+
+
+  .btn-log
+    margin-top: 5px
     cursor: pointer
     background: #9805bd
     border-radius: 60px
     font-size: 10px
     color: aliceblue
+    

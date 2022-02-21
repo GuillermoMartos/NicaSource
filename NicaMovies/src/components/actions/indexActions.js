@@ -2,13 +2,20 @@ import axios from "axios"
 
 export const TYPES={
     SET_MOVIE:"SET_MOVIE",
+    LOAD_HOME:"LOAD_HOME"
 }
 
-//set logged User
+//set movie selected for detail
 export const setMovie= function(movie){
-  
-    //axios al back para movie.id con user.id
+    console.log(movie)
     return function(dispatch){
         dispatch({type:TYPES.SET_MOVIE, payload:movie})
+    }
+}
+
+//set movies to load
+export const setLoad= function(load){
+    return function(dispatch){
+        dispatch({type:TYPES.LOAD_HOME, payload:load})
     }
 }

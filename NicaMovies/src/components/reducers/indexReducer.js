@@ -1,7 +1,8 @@
 import { TYPES } from "../actions/indexActions";
 
 const initialState = {
-  movie:[]
+  movie:[],
+  load:[]
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -10,6 +11,12 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         movie:action.payload
+      };
+    }
+    case TYPES.LOAD_HOME: {
+      return {
+        ...state,
+        load:action.payload
       };
     }
     default:
