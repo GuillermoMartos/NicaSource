@@ -61,7 +61,7 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS=[
-    'http://localhost:3000', 'https://commentator2.vercel.app/'
+    'http://localhost:3000', 'https://commentator2.vercel.app'
 ]
 
 ROOT_URLCONF = 'API.urls'
