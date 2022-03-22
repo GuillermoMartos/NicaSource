@@ -1,4 +1,4 @@
-import axios from "axios"
+
 
 export const TYPES={
     SET_MOVIE:"SET_MOVIE",

@@ -11,8 +11,8 @@ function Footer() {
           Up 🏠
         </a>
 
-        <a className="link" href="https://nicasource.com/" target="_blank">
-          NicaSource ⏫
+        <a className="link" href="https://www.linkedin.com/in/guillermo-luis-martos-7a01b6156/" target="_blank">
+          My LinkedIn 👈
         </a>
 
         <a

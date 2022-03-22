@@ -28,7 +28,7 @@ function Card({  title, year, rating,
       method: "GET",
       // headers: {'Authorization': {username:log.}},
       // auth:'username:user, password:django',
-      url: `http://localhost:8000/user/opinions/${movie.id}`
+      url: `https://commentator2.herokuapp.com/user/opinions/${movie.id}`
     }).then((res) => {
      movie.opinions=res.data
     });

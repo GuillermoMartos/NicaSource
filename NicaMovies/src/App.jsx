@@ -10,8 +10,14 @@ import { useSelector } from "react-redux";
 import Register from "./components/Register/register";
 import { setLoad } from "./components/actions/indexActions";
 import { useDispatch } from "react-redux";
+// import dotenv from "dotenv";
+
+
+
 
 function App() {
+  // dotenv.config();
+  // axios.defaults.baseURL= process.env.REACT_APP_API || "http://localhost:3001"
   let API_KEY = "5f5080d64c0c82542f3fded404131aff";
   var dispatch = useDispatch();
   let [search, setSearch] = useState("");
@@ -26,7 +32,7 @@ function App() {
         dispatch(setLoad(response.data.results));
       })
       .catch(function (error) {
-        return alert("unhable to get movie right now, please try again later");
+        return alert("unhable to get movies from API right now, please try again later");
       });
   }, []);
 
@@ -76,13 +82,14 @@ function App() {
           <h3>Initial tutorial</h3>
           <button className="search-bar-btn" onClick={()=>closeTutorial()}>X</button>
           <iframe
-            src="https://player.vimeo.com/video/679854227?h=1072017504&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+            src="https://player.vimeo.com/video/679854227?h=1072017504&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;muted=1"
             width="300"
             height="250"
             frameborder="0"
             allow="autoplay; fullscreen; picture-in-picture"
             allowfullscreen
             title="NicaMovies Tutorial"
+            
           ></iframe>
          
         </div>

@@ -49,7 +49,7 @@ function Register() {
       try {
         await axios({
           method: "POST",
-          url: "http://localhost:8000/user/register",
+          url: "https://commentator2.herokuapp.com/user/register",
           data: { username: data.email, password: data.password },
         }).then((res) => {
           setData({

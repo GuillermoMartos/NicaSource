@@ -16,28 +16,31 @@ function Comments({ movie }) {
     comment: "",
     review: "",
   });
-  var [allowReview, setAllowReview]=useState(false)
-  var [allowComment, setAllowComment]=useState(false)
+  var [allowReview, setAllowReview] = useState(false);
+  var [allowComment, setAllowComment] = useState(false);
+  var [has_review, set_review] = useState(false);
+  var [has_comment, set_comment] = useState(false);
 
   function handleChange(e) {
     let value = e.target.value;
-    if(e.target.name=="comment") setAllowComment(true)
-    if(e.target.name=="review") setAllowReview(true)
+    if (e.target.name == "comment") setAllowComment(true);
+    if (e.target.name == "review") setAllowReview(true);
     setOpinion({
       ...opinion,
       [e.target.name]: value,
     });
-    console.log(opinion)
+    console.log(opinion);
   }
 
   async function submitOpinion(e) {
     e.preventDefault();
-    if(opinion.comment==null && opinion.review== null) return alert("no comment or review to retrieve")
+    if (opinion.comment == null && opinion.review == null)
+      return alert("no comment or review to retrieve");
     let time = new Date();
     var date = `${time.getFullYear()}-${time.getMonth()}-${time.getDate()} `;
     var data = {
-      comment: opinion.comment==""? null : opinion.comment,
-      review: opinion.review==""? null : opinion.review,
+      comment: opinion.comment == "" ? null : opinion.comment,
+      review: opinion.review == "" ? null : opinion.review,
       username: localStorage.getItem("NicaMovieUser"),
       id_film: movie.id,
       date: date,
@@ -45,13 +48,37 @@ function Comments({ movie }) {
 
     try {
       await axios
-        .post(`http://localhost:8000/user/opinions/${movie.id}`, data)
+        .post(`https://commentator2.herokuapp.com/user/opinions/${movie.id}`, data)
         .then(async (res) => {
+          alert("thanks for your retrieve :)");
+          // let node = document.createElement("p");
+          if (data.review) {
+        
+            let textnode = document.createTextNode(
+              `📃 ${localStorage.getItem("NicaMovieUser")}: ${opinion.review}`
+            );
+            let div = document
+              .getElementById("reviews-parent")
+              .appendChild(textnode);
+            set_review(true);
+           
+          }
+
+          if (data.comment) {
+           
+            let textnode = document.createTextNode(
+              `🗨 ${localStorage.getItem("NicaMovieUser")}: ${opinion.comment}`
+            );
+            let div = document
+              .getElementById("comment-parent")
+              .appendChild(textnode);
+            set_comment(true);
+          
+          }
           await setOpinion({
             comment: "",
             review: "",
           });
-          alert("thanks for your retrieve :)");
           return;
         });
     } catch (error) {
@@ -80,25 +107,41 @@ function Comments({ movie }) {
       <div className="card-detail">
         <button
           className="card-btn"
-          onClick={() =>
-            (document.getElementById("move-div").style.marginLeft = "-110%")(
-              (document.getElementById("move-cdiv").style.marginLeft = "-110%")
-            )
-          }
+          onClick={() => {
+            document.getElementById("move-div").style.marginLeft = "-110%";
+            document.getElementById("move-cdiv").style.marginLeft = "-110%";
+
+            if (has_comment) {
+              var element = document.getElementById("comment-parent");
+              element.removeChild(element.lastChild);
+              set_comment(false);
+            }
+
+            if (has_review) {
+              var element = document.getElementById("reviews-parent");
+              element.removeChild(element.lastChild);
+              set_review(false);
+            }
+          }}
         >
           X
         </button>
         <h2>{movie.title}</h2>
         <h2 className="text-card-detail ">Comments</h2>
-        
+
         <div className="scroll-box">
-       
           {movie?.opinions &&
             movie?.opinions?.map((comments) => {
-              if(comments.comment)return <p>🗨 {comments.username}: {comments.comment}</p>;
+              if (comments.comment)
+                return (
+                  <p>
+                    🗨 {comments.username}: {comments.comment} - <span className="date">{comments.date}</span>
+                  </p>
+                );
             })}
+          <div id="comment-parent" />
         </div>
-        
+
         <div className="input-div">
           <label className="input-comment">make comment: </label>
           <form onSubmit={(e) => submitOpinion(e)}>
@@ -109,7 +152,9 @@ function Comments({ movie }) {
               rows="5"
               value={opinion.comment}
             ></textarea>
-            <button disabled={!allowComment} type="submit">Send</button>
+            <button disabled={!allowComment} type="submit">
+              Send
+            </button>
           </form>
         </div>
 
@@ -123,8 +168,14 @@ function Comments({ movie }) {
           <div className="scroll-box">
             {movie?.opinions &&
               movie?.opinions?.map((reviews) => {
-                if(reviews.review)return <p>📃{reviews.username}: {reviews.review}</p>;
+                if (reviews.review)
+                  return (
+                    <p>
+                      📃{reviews.username}: {reviews.review} - <span className="date">{reviews.date}</span>
+                    </p>
+                  );
               })}
+            <div id="reviews-parent" />
           </div>
           <div className="input-div">
             <form onSubmit={(e) => submitOpinion(e)}>
@@ -139,7 +190,9 @@ function Comments({ movie }) {
                 cols="43"
                 rows="7"
               ></textarea>
-              <button disabled={!allowReview} type="submit">Send</button>
+              <button disabled={!allowReview} type="submit">
+                Send
+              </button>
             </form>
           </div>
         </h4>
