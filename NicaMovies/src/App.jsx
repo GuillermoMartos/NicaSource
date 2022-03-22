@@ -18,7 +18,8 @@ import { useDispatch } from "react-redux";
 function App() {
   // dotenv.config();
   // axios.defaults.baseURL= process.env.REACT_APP_API || "http://localhost:3001"
-  let API_KEY = "5f5080d64c0c82542f3fded404131aff";
+  let API_KEY = "5f5080d64c0c82542f3fded404131aff"
+  // process.env.KEY_DEPLOY 
   var dispatch = useDispatch();
   let [search, setSearch] = useState("");
   // let [load, setLoad] = useState([]);
