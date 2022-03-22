@@ -52,7 +52,7 @@ function Register() {
           url: "https://commentator2.herokuapp.com/user/register",
           data: { username: data.email, password: data.password },
         }).then((res) => {
-          alert(res)
+         
           alert("recibí de register API")
           setData({
             email: "",
@@ -62,6 +62,7 @@ function Register() {
           document.getElementById("move-register").style.marginLeft = "-110%";
         });
       } catch (error) {
+        console.log({txt:error})
         alert(error)
         return alert("regisration proccess denied, email already registered");
       }
