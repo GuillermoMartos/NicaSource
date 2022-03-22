@@ -24,6 +24,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get("SECRET_KEY")
+# "django-insecure-*_rda6^@cupvqz9$cozil)+kvfrs5eby65&x6r(&8j2@h*f0o7"
+# os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -59,7 +61,7 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS=[
-    'http://localhost:3000'
+    'http://localhost:3000', 'https://commentator2.vercel.app/'
 ]
 
 ROOT_URLCONF = 'API.urls'
